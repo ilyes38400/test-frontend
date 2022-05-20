@@ -10,7 +10,8 @@ import {OmdbResponse} from "../interfaces/OmdbResponse";
 })
 export class MovieService {
 
-  private _url: string = environment.apiUrl
+  // private _url: string = environment.apiUrl
+   private _url: string = 'http://www.omdbapi.com/?apikey=4197ada1&'
 
   constructor(private http:HttpClient) { }
 
