@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {IMovie} from "../interfaces/IMovie"
 import {map, Observable} from "rxjs";
-import {OmdbResponse} from "../interfaces/OmdbResponse";
+import {OmdbResponse} from "../models/OmdbResponse";
+import {Movie} from "../models";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class MovieService {
 
   constructor(private http:HttpClient) { }
 
-  getMovies(params: string): Observable<IMovie[]>{
+  getMovies(params: string): Observable<Movie[]>{
     return this.http.get<OmdbResponse>(`${this._url}${params}`).pipe(map((response :OmdbResponse) => {
       return response.Search}));
   }

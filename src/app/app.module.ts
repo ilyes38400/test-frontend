@@ -2,18 +2,37 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { MovieComponent } from './movie/movie.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MovieService} from "./services/movie.service";
+import {ActionReducer, ActionReducerMap, StoreModule} from '@ngrx/store';
+import { reducers } from './store/reducers';
+import { effects } from './store/effects/effect';
+
+import {MoviesComponent} from "./components/movies.component";
+import { EffectsModule } from '@ngrx/effects';
+//import {MyService} from "./services/my.services";
+import {routerReducers} from "./router-store/router.state";
+import {MoviesListComponent} from "./components/movie-list.component";
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    MovieComponent
+    MoviesComponent,
+    MoviesListComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+/*    StoreModule.forRoot({
+      elements: reducer
+    } as ActionReducerMap<any,any>)*/
+    StoreModule.forRoot({}  ),
+    StoreModule.forFeature('elements', reducers),
+    StoreModule.forFeature('router', routerReducers),
+    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([]),
+    EffectsModule.forFeature(effects)
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]

@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+.loader {
+  margin: auto;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: .25rem solid gray;
+  border-top-color: black;
+  animation: spin 1s infinite linear;
+}

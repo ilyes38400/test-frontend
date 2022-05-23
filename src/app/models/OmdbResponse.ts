@@ -1,7 +1,7 @@
-import {IMovie} from "./IMovie";
+import {Movie} from "./movie.model";
 
 export interface OmdbResponse{
-  Search: IMovie[];
+  Search: Movie[];
   totalResults: string;
   Response: string;
 }
