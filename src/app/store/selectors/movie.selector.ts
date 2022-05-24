@@ -1,10 +1,9 @@
-import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
+import {  createFeatureSelector, createSelector } from '@ngrx/store';
 import {ElementsState} from "../reducers";
 import {getMovies, MoviesState} from "../reducers/movies.reducer";
-import {Movie} from "../../models/movie.model";
+import {getElementsState} from "./index";
 
 // globalState
-export const getElementsState = createFeatureSelector<ElementsState>('elements');
 
 // moviesState
 export const getMoviesState = createSelector(getElementsState, (state: ElementsState) => state.movies);

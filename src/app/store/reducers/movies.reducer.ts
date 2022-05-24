@@ -26,7 +26,7 @@ export function reducer(
     case MovieActions.GET_MOVIES: {
       return {
         ...state,
-        loading: true
+        loading: true,
       };
     }
     case MovieActions.GET_MOVIES_ERROR: {

@@ -19,6 +19,7 @@ import {GetMovieAction} from "../store/actions";
     </ng-container>
     <ng-container *ngIf="!(selectedMoviesState$ | async)!.loading; else loader">
       <app-movies-list [movies]="(selectedMoviesState$ | async)!.data"></app-movies-list>
+      <app-watchList></app-watchList>
     </ng-container>
     <ng-template #loader>
       <div class="loader"></div>
@@ -28,7 +29,6 @@ import {GetMovieAction} from "../store/actions";
 })
 export class MoviesComponent implements OnInit{
   selectedMoviesState$: Observable<MoviesState>;
-  listMovies: Movie[];
 
 
   constructor(
@@ -38,7 +38,6 @@ export class MoviesComponent implements OnInit{
   ngOnInit(): void {
     this.selectedMoviesState$ = this.store.select<any>(getMoviesState);
     this.store.dispatch(new GetMovieAction());
-    console.log(this.selectedMoviesState$.subscribe(elem=>console.log(elem.data)));
 
 
 

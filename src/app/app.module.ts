@@ -13,13 +13,15 @@ import { EffectsModule } from '@ngrx/effects';
 //import {MyService} from "./services/my.services";
 import {routerReducers} from "./router-store/router.state";
 import {MoviesListComponent} from "./components/movie-list.component";
+import {WatchlistComponent} from "./components/watchlist.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviesComponent,
-    MoviesListComponent
+    MoviesListComponent,
+    WatchlistComponent
   ],
   imports: [
     BrowserModule,

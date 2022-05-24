@@ -1,13 +1,18 @@
 import { ActionReducerMap } from '@ngrx/store';
 import * as moviesReducer from "./movies.reducer";
+import * as listMoviesReducer from "./list.reducer"
 import {MoviesState} from "./movies.reducer";
+import {Movie} from "../../models";
 
-// State de notre feature
+// State
 export interface ElementsState {
   movies: MoviesState;
+  listMovies: Movie[];
 }
 
-// Reducers pour notre state
-export const reducers: ActionReducerMap<ElementsState,any> = {
+
+// Reducers
+export const reducers: ActionReducerMap<any,any> = {
   movies : moviesReducer.reducer ,
+  listMovies : listMoviesReducer.reducer
 };
