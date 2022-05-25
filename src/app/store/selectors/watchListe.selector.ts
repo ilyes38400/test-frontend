@@ -1,13 +1,13 @@
 import {  createFeatureSelector, createSelector } from '@ngrx/store';
-import {getMovies, MoviesState} from "../reducers/movies.reducer";
 import {getElementsState} from "./index";
 import {ElementsState} from "../reducers";
+import {Movie} from "../../models";
 
 // globalState
 
-export const getWatchListState = createSelector(getElementsState, (state: ElementsState) => state.listMovies);
+//export const getWatchListState = createSelector(getElementsState, (state: ElementsState) => state.listMovies);
 
 
-
+export const watchListSelector = createSelector(createFeatureSelector("movie"), (state: Movie[]) => state);
 
 

@@ -1,26 +1,18 @@
-import { Action } from '@ngrx/store'
+import {createReducer, on} from '@ngrx/store'
 import * as listActions from '../actions/list.action'
 import {Movie} from "../../models";
+import {actions} from "../actions/list.action";
+
+let movies:Movie[]=[];
 
 
-export interface ListState {
-  data: Movie;
-  isSelected : boolean;
-}
-
-export const initialState: Array<ListState> = [];
-
-export function reducer(
-  state:Array<ListState>  = initialState,
-  action: listActions.Actions)
-{
-  switch(action.type) {
-    case listActions.ADD_MOVIE:
-      return [
-        ...state,
-         action.payload,
-      ];
-    default:
-      return state;
-  }
-}
+export const listReducer = createReducer(
+  movies,
+  on(actions.addMovie,(state,movie)=> {
+    return [...state, movie]
+  }),
+  on(actions.deleteMovie,(state,movie)=>{
+    let movies = state.filter((m)=>m.imdbID != movie.imdbID);
+    return [...movies] ;
+  })
+)

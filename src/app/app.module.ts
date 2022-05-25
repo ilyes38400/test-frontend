@@ -14,6 +14,7 @@ import { EffectsModule } from '@ngrx/effects';
 import {routerReducers} from "./router-store/router.state";
 import {MoviesListComponent} from "./components/movie-list.component";
 import {WatchlistComponent} from "./components/watchlist.component";
+import {listReducer} from "./store/reducers/list.reducer";
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import {WatchlistComponent} from "./components/watchlist.component";
     } as ActionReducerMap<any,any>)*/
     StoreModule.forRoot({}  ),
     StoreModule.forFeature('elements', reducers),
+    StoreModule.forFeature('movie', listReducer),
     StoreModule.forFeature('router', routerReducers),
     EffectsModule.forRoot([]),
     EffectsModule.forRoot([]),

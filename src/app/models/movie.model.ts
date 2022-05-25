@@ -4,5 +4,7 @@ export interface Movie  {
   imdbID: string;
   Type : string;
   Poster: string;
-
+ // isSelected : boolean
 }
+
+
