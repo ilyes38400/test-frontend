@@ -15,6 +15,7 @@ import {routerReducers} from "./router-store/router.state";
 import {MoviesListComponent} from "./components/movie-list.component";
 import {WatchlistComponent} from "./components/watchlist.component";
 import {listReducer} from "./store/reducers/list.reducer";
+import { IonicModule } from '@ionic/angular';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {listReducer} from "./store/reducers/list.reducer";
     StoreModule.forFeature('router', routerReducers),
     EffectsModule.forRoot([]),
     EffectsModule.forRoot([]),
-    EffectsModule.forFeature(effects)
+    EffectsModule.forFeature(effects),
+    IonicModule.forRoot()
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]

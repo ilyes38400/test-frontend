@@ -4,6 +4,7 @@ const path = require('path');
 const PORT = process.env.PORT || 5000;
 var app_path ='../dist/ilyes-front';
 
+app.use(express.static('www'));
 
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
