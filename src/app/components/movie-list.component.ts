@@ -15,7 +15,7 @@ import {watchListSelector} from "../store/selectors/watchListe.selector";
 		<div *ngFor="let movie of movies" >
 				<p>{{movie.Title}}</p>
         <p *ngIf="isInWatchlist(movie);else notInWatchList" >
-          LISTED
+          Listed
         </p>
       <ng-template #notInWatchList> not listed</ng-template>
 
