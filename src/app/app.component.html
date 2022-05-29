@@ -6,7 +6,10 @@
           <ion-col class="ion-hide-lg-down">
       <img src="https://media.jobup.ch/media/52624613-fa8d-4b5c-818e-27dffa1eda7b.jpg" class="img-header">
           </ion-col>
-      <ion-col>
+
+
+      <!-- desktop -->
+      <ion-col  class="ion-hide-lg-down">
       <div class="search">
         <ion-item color="medium" class="year">
           <ion-select interface="popover" [(ngModel)]="type" (ionChange)="typeSelect();" placeholder="Type" >
@@ -23,8 +26,33 @@
           </ion-select>
         </ion-item>
         <ion-searchbar #q  placeholder="Title" color="light "  (keyup.enter)="searchMovies(q.value)" ></ion-searchbar>
+
       </div>
       </ion-col>
+
+          <!-- mobile -->
+          <ion-col class="ion-hide-lg-up">
+            <div class="searchMobie">
+                <img src="https://media-exp1.licdn.com/dms/image/C4D0BAQEJfOZ6zyeKYw/company-logo_200_200/0/1629817103845?e=2147483647&v=beta&t=iXlAftb17agVKjlbgybWT7v_h4NAnaNNIDRlzNS5xPU" class="img-headerLittle">
+              <ion-item color="medium" class="year">
+                <ion-select interface="popover" [(ngModel)]="type" (ionChange)="typeSelect();" placeholder="Type" >
+                  <ion-select-option value="movie">Movies</ion-select-option>
+                  <ion-select-option value="series">Series</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item color="medium" class="year">
+                <ion-select interface="popover" placeholder="Year" [(ngModel)]="year" (ionChange)="yearSelect();">
+                  <ion-select-option value="2018">2018</ion-select-option>
+                  <ion-select-option value="2017">2017</ion-select-option>
+                  <ion-select-option value="2016">2016</ion-select-option>
+                  <ion-select-option value="2015">2015</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-searchbar #q  placeholder="Title" color="light "  (keyup.enter)="searchMovies(q.value)"  ></ion-searchbar>
+
+            </div>
+          </ion-col>
+
         </ion-row>
       </ion-grid>
     </ion-toolbar>

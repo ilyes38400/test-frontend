@@ -14,7 +14,11 @@
   float: left !important;
   padding-left: 10em;
 }
-
+.img-headerLittle{
+  height: 40px;
+  margin-top: 3px;
+  float: left !important;
+}
 
 
 ion-select {
@@ -36,11 +40,20 @@ width: 160px;
   display: flex;
   justify-content: start;
     }
+
+.searchMobie{
+  display: flex;
+  justify-content: start;
+}
+
 .searchbar-input{
     border-radius: 25px !important;
   }
-.ion-grid{
-  }
+
+.searchbar-input sc-ion-searchbar-md{
+  min-width: 30px!important;
+}
+
 .ion-col{
     --ion-grid-columns : 3;
   }
