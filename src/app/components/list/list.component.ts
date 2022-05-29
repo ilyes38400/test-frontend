@@ -1,13 +1,9 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Movie } from '../../models/movie.model';
 import {Store} from "@ngrx/store";
-import {ElementsState} from "../../store/reducers";
-import {WatchlistComponent} from "../watchlist/watchlist.component";
-import {actions, AddMovie} from "../../store/actions";
-import {Observable} from "rxjs";
-import {map} from "rxjs/operators";
+import {actions} from "../../store/actions";
 import {watchListSelector} from "../../store/selectors/watchListe.selector";
-
+const CACHE_KEY = 'httpRepoCache';
 
 @Component({
   selector: 'app-movies-list',
@@ -25,21 +21,18 @@ export class MoviesListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.select(watchListSelector).subscribe((state)=>this.watchList =state);
+    this.watchList = JSON.parse(localStorage[CACHE_KEY] || '[]');
+    this.initWatchList();
+    this.store.select(watchListSelector).subscribe((state)=>{
+      this.watchList =state;
+      localStorage[CACHE_KEY]= JSON.stringify(state);
+    });
   }
 
   addMovie(movie: Movie) {
-    //movie.isSelected = true;
-  //  var newMovie = JSON.parse(JSON.stringify(movie));
-    //newMovie.isSelected = true;
+
     if(!this.watchList.some(data=>data.imdbID == movie.imdbID))
       this.store.dispatch(actions.addMovie(movie) )
-    /*    watchList = this.store.select<any>(getWatchListState);
-        watchList.subscribe(x => {
-          if(!x.some(data=>data.imdbID == movie.imdbID))
-            this.store.dispatch(actions.addMovie(movie) )
-        });*/
-        //console.log(watchList.subscribe(data=>console.log(data)));
         }
 
 
@@ -54,7 +47,10 @@ export class MoviesListComponent implements OnInit {
     return bool
   }
 
-
+  initWatchList(){
+    //to do : change this fonction to store all tab direclty
+    this.watchList.forEach(movie =>this.store.dispatch(actions.addMovie(movie) ) );
+  }
 
 
 }

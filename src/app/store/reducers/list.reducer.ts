@@ -11,6 +11,9 @@ export const listReducer = createReducer(
   on(actions.addMovie,(state,movie)=> {
     return [...state, movie]
   }),
+  on(actions.addTabMovie,(state,movieTab:any)=> {
+    return [...state, movieTab.movieTab]
+  }),
   on(actions.deleteMovie,(state,movie)=>{
     let movies = state.filter((m)=>m.imdbID != movie.imdbID);
     return [...movies] ;

@@ -8,9 +8,14 @@ export const REMOVE_MOVIE    = 'Remove'
 
 const deleteMovie = createAction("[LIST] DELETE_MOVIE", props<Movie>())
 const addMovie = createAction("[LIST] ADD_MOVIE", props<Movie>())
+const addTabMovie = createAction("[LIST] ADD_TABMOVIE", props<{movieTab :Movie[]}>())
 
-// Section 3
 export class AddMovie implements Action {
+  readonly type = ADD_MOVIE
+  constructor(public payload: any) {}
+}
+
+export class AddTabMovie implements Action {
   readonly type = ADD_MOVIE
   constructor(public payload: any) {}
 }
@@ -21,5 +26,4 @@ export class RemoveMovie implements Action {
   constructor(public payload: any) {}
 }
 
-// Section 4
-export const actions = {addMovie,deleteMovie};
+export const actions = {addMovie,deleteMovie,addTabMovie};
