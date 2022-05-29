@@ -3,7 +3,9 @@ import { Movie } from '../../models/movie.model';
 import {Store} from "@ngrx/store";
 import {actions} from "../../store/actions";
 import {watchListSelector} from "../../store/selectors/watchListe.selector";
+import {getMoviesState} from "../../store/selectors/movie.selector";
 const CACHE_KEY = 'httpRepoCache';
+
 
 @Component({
   selector: 'app-movies-list',
@@ -18,9 +20,14 @@ export class MoviesListComponent implements OnInit {
 
 
   constructor(private store: Store) {
+
   }
 
+
+
+
   ngOnInit(): void {
+    this.store.select(getMoviesState).subscribe((state)=>this.movies=state);
     this.watchList = JSON.parse(localStorage[CACHE_KEY] || '[]');
     this.initWatchList();
     this.store.select(watchListSelector).subscribe((state)=>{

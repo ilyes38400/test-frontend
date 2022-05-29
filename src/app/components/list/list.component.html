@@ -1,8 +1,9 @@
 <ion-content >
   <ion-grid>
     <ion-row>
-      <ion-col size="1"></ion-col>
-      <ion-col size="6">
+      <!-- Affichage pour desktop -->
+
+      <ion-col size="7" class="ion-hide-md-down">
         <fieldset *ngIf="movies && movies!.length >0">
           <legend style="font-weight: bold" >Search Result</legend>
         <div class="movie-list" *ngFor="let movie of movies">
@@ -33,11 +34,50 @@
           </div>
         </div>
         </fieldset>
-
       </ion-col>
-      <ion-col size="3">
+      <ion-col size="3" class="ion-hide-md-down" >
         <app-watchList></app-watchList>
       </ion-col>
+
+      <!-- Affichage pour mobile -->
+
+      <ion-col  class="ion-hide-md-up">
+        <fieldset *ngIf="movies && movies!.length >0">
+          <legend style="font-weight: bold" >Search Result</legend>
+          <ion-list class="listMobile">
+          <div class="movie-list" *ngFor="let movie of movies">
+            <div class="column">
+              <div class="picture">
+                <img *ngIf="movie.Poster != 'N/A'" class="img" src="{{movie.Poster}}" >
+                <img *ngIf="movie.Poster == 'N/A'" class="img" src="http://www.ipsgroup.fr/wp-content/uploads/2013/12/default_image_01-1024x1024-570x321.png" >
+              </div>
+              <div class="text">
+                <div class="title" style="font-weight: bold;">{{movie.Title}}</div>
+                <div style="font-weight: 150;" class="info">
+                  {{movie.Year}} - {{movie.Type}}
+                </div>
+                <div  class="info" style="padding-top: 7px;" *ngIf="isInWatchlist(movie);else notInWatchList">
+                  <button class = "buttons" style="font-weight: bold;background-color: #FACC1F"><a href="" target="_blank">IMDB</a></button>
+                  <button class="buttons" style="margin-left: 5px;font-weight: bold;background-color: orange">Listed</button>
+                </div>
+                <ng-template  #notInWatchList>
+                  <div class="info" style="padding-top: 7px;">
+                    <button class="buttons" formtarget="_blank" style="font-weight: bold;background-color: #FACC1F">IMDB</button>
+                    <button class="buttons"(click)="addMovie(movie)" style="margin-left: 5px;font-weight: bold; background-color:limegreen ">ADD</button>
+                  </div>
+                </ng-template>
+                <div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </ion-list>
+
+        </fieldset>
+        <app-watchList></app-watchList>
+      </ion-col>
+
+
     </ion-row>
   </ion-grid>
 </ion-content>

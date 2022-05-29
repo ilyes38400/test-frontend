@@ -12,7 +12,7 @@
   height: 40px;
   margin-top: 3px;
   float: left !important;
-  margin-left: 15em;
+  padding-left: 10em;
 }
 
 
@@ -33,7 +33,6 @@ width: 160px;
 
 .search{
     float: right;
-    margin-right: 8em;
   display: flex;
   justify-content: start;
     }
@@ -51,11 +50,6 @@ width: 160px;
     height: 165px;
     display: inline-grid;
   }
-
-/*  .box{
-    display: flex;
-    align-items:flex-start;
-  }*/
 
   .column {
     white-space: nowrap;
@@ -102,4 +96,12 @@ width: 160px;
 }
 
 
+.listMobile{
+  max-height :400px;
+  overflow-y: scroll;
+}
 
+.listMobileWatchList{
+  max-height :825px;
+  overflow-y: scroll;
+}

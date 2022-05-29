@@ -5,6 +5,7 @@ import { Movie } from '../../models/movie.model';
 import {ElementsState} from "../../store/reducers";
 import { watchListSelector} from "../../store/selectors/watchListe.selector";
 import {actions, REMOVE_MOVIE, RemoveMovie} from "../../store/actions";
+import {Platform} from "@ionic/angular";
 
 @Component({
   selector: 'app-watchList',
@@ -14,11 +15,14 @@ import {actions, REMOVE_MOVIE, RemoveMovie} from "../../store/actions";
 
 export class WatchlistComponent implements OnInit {
 
-  // Section 1
   watchList: Movie[] =[];
 
-  // Section 2
-  constructor(private store: Store) {
+  platform : any ;
+
+  constructor(private store: Store,platform: Platform) {
+    platform.ready().then(() => {
+      this.platform = platform.width();
+    });
   }
   ngOnInit() {
     this.loadWatchList();

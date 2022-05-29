@@ -2,6 +2,8 @@
 
 <fieldset *ngIf="watchList!.length >0">
   <legend style="font-weight: bold" >My WatchList</legend>
+  <ion-list class="listMobileWatchList" >
+
   <div class="movie-list" *ngFor="let movie of watchList">
 
     <div class="column">
@@ -23,5 +25,7 @@
       </div>
     </div>
   </div>
+  </ion-list>
 </fieldset>
+
 
