@@ -2,51 +2,33 @@
 import {Movie} from "../../models/movie.model";
 
 import * as MovieActions from '../actions/movies.action'
+import {createReducer, on} from "@ngrx/store";
+import {action} from "../actions/movies.action";
 
 
 export interface MoviesState {
-  data: Movie[];
-  loading: boolean;
-  error: string;
+  searchValue: string;
+  movies: Movie[];
 }
 
 // Initial state
-export const initialState: MoviesState = {
-  data: [],
-  loading: false,
-  error: ''
+const initialState: MoviesState = {
+  searchValue: '',
+  movies: []
 };
 
 // REDUCER
-export function reducer(
-  state = initialState,
-  action: MovieActions.GetMovieAction | MovieActions.GetMovieActionError | MovieActions.GetMovieActionSuccess
-): MoviesState {
-  switch (action.type) {
-    case MovieActions.GET_MOVIES: {
-      return {
-        ...state,
-        loading: true,
-      };
-    }
-    case MovieActions.GET_MOVIES_ERROR: {
-      return {
-        ...state,
-        loading: false,
-        error: action.payload
-      };
-    }
-    case MovieActions.GET_MOVIES_SUCCESS: {
-      return {
-        ...state,
-        loading: false,
-        data: action.payload
-      };
-    }
-  }
+export const reducer = createReducer(
+  initialState,
+  on(action.searchMovies, (state,{ query }) => ({
+    ...state,
+    searchValue: query,
+  })),
+  on(action.searchSuccess, (state, { movies }) => ({
+    ...state,
+    movies,
+  }))
+);
 
-  return state;
-}
-
-export const getMovies = (state: MoviesState) => state.data;
+//export const getMovies = (state: MoviesState) => state;
 

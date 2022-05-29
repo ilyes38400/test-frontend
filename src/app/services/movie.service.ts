@@ -17,6 +17,7 @@ export class MovieService {
   constructor(private http:HttpClient) { }
 
   getMovies(params: string): Observable<Movie[]>{
+     console.log(params);
     return this.http.get<OmdbResponse>(`${this._url}${params}`).pipe(map((response :OmdbResponse) => {
       return response.Search}));
   }

@@ -1,23 +1,14 @@
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs/";
 import {ChangeDetectionStrategy, Component, OnInit} from "@angular/core";
-import { Movie } from '../models/movie.model';
-import {ElementsState} from "../store/reducers";
-import { watchListSelector} from "../store/selectors/watchListe.selector";
-import {actions, REMOVE_MOVIE, RemoveMovie} from "../store/actions";
-import {getAllMovies} from "../store/selectors/movie.selector";
+import { Movie } from '../../models/movie.model';
+import {ElementsState} from "../../store/reducers";
+import { watchListSelector} from "../../store/selectors/watchListe.selector";
+import {actions, REMOVE_MOVIE, RemoveMovie} from "../../store/actions";
 
 @Component({
   selector: 'app-watchList',
-  template: `
-    <ng-container *ngIf="watchList ">
-    <li *ngFor="let movie of watchList">
-      <button (click)="delMovie(movie)">delete</button>
-      {{ movie.Title }}
-    </li>
-    </ng-container>
-
-  `,
+  templateUrl:'./watchlist.component.html',
 })
 
 

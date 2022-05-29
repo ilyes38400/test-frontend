@@ -22,6 +22,4 @@ export class RemoveMovie implements Action {
 }
 
 // Section 4
-export type Actions = AddMovie | RemoveMovie
-
 export const actions = {addMovie,deleteMovie};

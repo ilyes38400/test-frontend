@@ -1,3 +1,36 @@
+<ion-app>
+  <ion-header >
+    <ion-toolbar color="medium" >
+      <img src="https://media.jobup.ch/media/52624613-fa8d-4b5c-818e-27dffa1eda7b.jpg" class="img-header">
 
-<app-movies></app-movies>
+      <div class="search">
+        <ion-item color="medium" class="year">
+          <ion-select interface="popover" [(ngModel)]="type" (ionChange)="typeSelect();" placeholder="Type" >
+            <ion-select-option value="movie">Movies</ion-select-option>
+            <ion-select-option value="series">Series</ion-select-option>
 
+          </ion-select>
+        </ion-item>
+
+        <ion-item color="medium" class="year">
+          <ion-select interface="popover" placeholder="Year" [(ngModel)]="year" (ionChange)="yearSelect();">
+            <ion-select-option value="2018">2018</ion-select-option>
+            <ion-select-option value="2017">2017</ion-select-option>
+            <ion-select-option value="2016">2016</ion-select-option>
+            <ion-select-option value="2015">2015</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-searchbar #q  placeholder="Title" color="light "  (keyup.enter)="searchMovies(q.value)" ></ion-searchbar>
+
+      </div>
+
+    </ion-toolbar>
+
+  </ion-header>
+
+  <ion-content class="ion-padding">
+
+    <app-movies></app-movies>
+  </ion-content>
+</ion-app>

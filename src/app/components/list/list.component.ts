@@ -1,32 +1,22 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Movie } from '../models/movie.model';
+import { Movie } from '../../models/movie.model';
 import {Store} from "@ngrx/store";
-import {ElementsState} from "../store/reducers";
-import {WatchlistComponent} from "./watchlist.component";
-import {actions, AddMovie} from "../store/actions";
+import {ElementsState} from "../../store/reducers";
+import {WatchlistComponent} from "../watchlist/watchlist.component";
+import {actions, AddMovie} from "../../store/actions";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
-import {watchListSelector} from "../store/selectors/watchListe.selector";
+import {watchListSelector} from "../../store/selectors/watchListe.selector";
 
 
 @Component({
   selector: 'app-movies-list',
-  template: `
-		<div *ngFor="let movie of movies" >
-				<p>{{movie.Title}}</p>
-        <p *ngIf="isInWatchlist(movie);else notInWatchList" >
-          Listed
-        </p>
-      <ng-template #notInWatchList> not listed</ng-template>
-
-      <button (click)="addMovie(movie)">Add a Tutorial</button>
-    </div>
-  `,
+  templateUrl: 'list.component.html',
 })
 export class MoviesListComponent implements OnInit {
 
   @Input()
-  movies: Movie[];
+  movies: Movie[]=[];
 
   watchList: Movie[];
 

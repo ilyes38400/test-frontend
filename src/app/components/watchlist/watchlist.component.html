@@ -1,0 +1,27 @@
+
+
+<fieldset *ngIf="watchList!.length >0">
+  <legend style="font-weight: bold" >Search Result</legend>
+  <div class="movie-list" *ngFor="let movie of watchList">
+
+    <div class="column">
+      <div class="picture">
+        <img class="img" src="{{movie.Poster}}">
+      </div>
+      <div class="text">
+        <div class="title" style="font-weight: bold;">{{movie.Title}}</div>
+        <div  class="info" style="font-weight: 150;">
+          {{movie.Year}} - {{movie.Type}}
+        </div>
+        <div  class="info" style="padding-top: 7px;" >
+          <button class = "buttons" style="font-weight: bold;background-color: #FACC1F"><a href="" target="_blank">IMDB</a></button>
+          <button class="buttons" (click)="delMovie(movie)" style="margin-left: 5px;font-weight: bold;background-color: red">REMOVE</button>
+        </div>
+
+        <div>
+        </div>
+      </div>
+    </div>
+  </div>
+</fieldset>
+

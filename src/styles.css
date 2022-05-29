@@ -7,3 +7,99 @@
   border-top-color: black;
   animation: spin 1s infinite linear;
 }
+
+.img-header{
+  height: 40px;
+  margin-top: 3px;
+  float: left !important;
+  margin-left: 15em;
+}
+
+
+
+ion-select {
+  /* Applies to the value and placeholder color */
+  color: white;
+
+  /* Set a different placeholder color */
+  --placeholder-color: #FFFF;
+
+  /* Set full opacity on the placeholder */
+  --placeholder-opacity: 1;
+
+width: 160px;
+  justify-content: center;
+}
+
+.search{
+    float: right;
+    margin-right: 8em;
+  display: flex;
+  justify-content: start;
+    }
+.searchbar-input{
+    border-radius: 25px !important;
+  }
+.ion-grid{
+  }
+.ion-col{
+    --ion-grid-columns : 3;
+  }
+  .movie-list{
+    width: 50%;
+    width: 300px;
+    height: 165px;
+    display: inline-grid;
+  }
+
+/*  .box{
+    display: flex;
+    align-items:flex-start;
+  }*/
+
+  .column {
+    white-space: nowrap;
+  }
+
+
+  .column .picture img {
+    vertical-align: top;
+    float: left;
+  }
+
+  .column .text {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 15px;
+    word-break: break-all;;
+  }
+
+  .column .info {
+    margin-top: 10px;
+  }
+
+.buttons {
+  border-radius: 25px;
+  height: 30px;
+  width: 70px;
+}
+
+  a, u {
+    text-decoration: none;
+    color: black !important;
+  }
+
+.img{
+  width: 100px;
+}
+
+.title{
+  white-space: normal;
+  word-break: break-all;
+  width: 180px;
+  height: 50px;
+
+}
+
+
+

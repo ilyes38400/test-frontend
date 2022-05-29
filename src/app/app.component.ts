@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ElementsState  } from './store/reducers/index';
 import { Store } from '@ngrx/store';
-import { getMovies, MoviesState } from './store/reducers/movies.reducer';
 import { Observable } from 'rxjs/';
 import { Movie } from './models/movie.model';
-import {GetMovieAction} from "./store/actions/movies.action";
 import {getMoviesState} from "./store/selectors/movie.selector";
+import {action} from "./store/actions";
 
 @Component({
   selector: 'app-root',
@@ -14,13 +13,31 @@ import {getMoviesState} from "./store/selectors/movie.selector";
 })
 export class AppComponent implements OnInit {
 
-  movies$: Observable<MoviesState>;
-
+  year : string = "";
+  type : string = "";
+  title :string = "";
+  search : string = this.title+"&y="+this.year;
   constructor(private store: Store<ElementsState>,) {
   }
 
   ngOnInit() {
-    this.movies$ = this.store.select<MoviesState>(getMoviesState);
-    this.store.dispatch(new GetMovieAction());
+
+  }
+
+  searchMovies(q:any){
+    this.title=q;
+    if(q != "") {
+      let query = "s="+q + "&y=" + this.year + "&type=" + this.type;
+      //this.store.select(getMoviesState).subscribe((state)=>console.log(state));
+      this.store.dispatch(action.searchMovies({query: query}));
+    }
+  }
+
+  yearSelect() {
+    this.searchMovies(this.title);
+  }
+
+  typeSelect() {
+    this.searchMovies(this.title);
   }
 }
